@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from  './Person.module.css'
 
+import Aux from '../../../hoc/Auxiliary'
 const person = (props) =>
 {
   console.log('[person.js] rendering ...')
@@ -14,12 +15,11 @@ const person = (props) =>
   }
 
   return (
-
-        <div className={classes.Person}> 
+        <Aux> 
           <p onClick={props.click}>I'm a {props.name} and i am {props.age} years old!!</p>
           <p>{props.children}</p>
           <input type="text" onChange={props.changed} value={props.name}/>
-        </div>
+        </Aux>
     )
 };
 

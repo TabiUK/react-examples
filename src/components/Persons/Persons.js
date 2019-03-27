@@ -1,8 +1,19 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Person from './Person/Person'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
-class Persons extends Component {
+
+/****
+* PureComponent
+*  automaticlly setup shouldComponentUpdate to compare all the
+*  props ie nextProps.x !== this.props.x ....
+*
+*  where as Component
+*  you will need to specifiy in shouldComponentUpdate like below
+*/
+
+
+class Persons extends PureComponent {
 
   // 1st
   //static getDerivedStateFromProps(props, state)
@@ -12,13 +23,15 @@ class Persons extends Component {
   //}
 
   //2nd
-  shouldComponentUpdate(nextProps, nextState)
-  {
-    console.log('Person.js shouldComponentUpdate')
-    if (nextProps.persons !== this.props.persons) return true
+  //shouldComponentUpdate(nextProps, nextState)
+  //{
+  //  console.log('Person.js shouldComponentUpdate')
+  //  if (nextProps.persons !== this.props.persons ||
+  //       nextProps.changed !== this.props.changed ||
+  //       nextProps.clicked !== this.props.clicked ) return true
 
-    return false
-  }
+  //  return false
+  //}
 
   //3rd
   getSnapshotBeforeUpdate(prevProps, preState)
