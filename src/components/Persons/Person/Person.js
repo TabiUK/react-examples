@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from  './Person.module.css'
-
 import Aux from '../../../hoc/Auxiliary'
+import withClass from '../../../hoc/withClass'
 
 // React.Fragment is the same as creating an Aux component
 
-const person = (props) =>
+const person = (props) => 
 {
   console.log('[person.js] rendering ...')
   /*
@@ -26,4 +26,4 @@ const person = (props) =>
     )
 };
 
-export default person;
+export default withClass(person, classes.Person);
