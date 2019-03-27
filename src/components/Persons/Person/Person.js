@@ -3,6 +3,7 @@ import classes from  './Person.module.css'
 
 const person = (props) =>
 {
+  console.log('[person.js] rendering ...')
   /*
   *
   *  this would cause person to throw an error which can be cought by ErrorBoundary
