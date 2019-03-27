@@ -2,6 +2,9 @@ import React from 'react';
 import classes from  './Person.module.css'
 
 import Aux from '../../../hoc/Auxiliary'
+
+// React.Fragment is the same as creating an Aux component
+
 const person = (props) =>
 {
   console.log('[person.js] rendering ...')
