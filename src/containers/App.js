@@ -6,7 +6,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass'
 import Aux from '../hoc/Auxiliary'
-import AuthContext from '../context/auth--context'
+import AuthContext from '../context/auth-context'
 
 class App extends Component {
 

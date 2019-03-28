@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import classes from  './Cockpit.module.css'
-import AuthContext from '../../context/auth--context'
+import AuthContext from '../../context/auth-context'
 
 const cockpit = (props) => {
 

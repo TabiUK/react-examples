@@ -3,7 +3,7 @@ import classes from  './Person.module.css'
 import Aux from '../../../hoc/Auxiliary'
 import withClass from '../../../hoc/withClass'
 import PropTypes from 'prop-types'
-import AuthContext from '../../../context/auth--context'
+import AuthContext from '../../../context/auth-context'
 
 // React.Fragment is the same as creating an Aux component
 
