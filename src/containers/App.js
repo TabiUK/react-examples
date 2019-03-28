@@ -9,6 +9,18 @@ import Aux from '../hoc/Auxiliary'
 
 class App extends Component {
 
+  state = {
+    persons: [
+      { id: '123456A', name: 'Max', age: 28 },
+      { id: '123456B', name: 'Manu', age: 29 },
+      { id: '123456C', name: 'Stephanie', age: 26 }
+    ],
+    otherState: 'some other value',
+    showPersons: false,
+    showCockpit: true,
+    changeCounter: 0
+  };
+
   // this gets called first
   constructor(props) {
     super(props)
@@ -45,17 +57,6 @@ class App extends Component {
 
   }
 
-  state = {
-    persons: [
-      { id: '123456A', name: 'Max', age: 28 },
-      { id: '123456B', name: 'Manu', age: 29 },
-      { id: '123456C', name: 'Stephanie', age: 26 }
-    ],
-    otherState: 'some other value',
-    showPersons: false,
-    showCockpit: true
-  };
-
   switchNameHandler = (NewName = 'dave') => {
     // console.log('Was clicked!');
     // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
@@ -89,7 +90,15 @@ class App extends Component {
     const persons = [...this.state.persons]
     persons[personIndex] = person;
 
-    this.setState({ persons });
+    // if you want to update a state from the current state need to use a function 
+
+    this.setState((prevState, props) =>
+    {
+      return { 
+        persons, 
+        changeCounter: prevState.changeCounter + 1
+      }
+    });
   }
 
   deletePersonHandler = (personIndex) =>

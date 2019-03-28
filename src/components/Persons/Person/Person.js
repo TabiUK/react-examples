@@ -2,6 +2,7 @@ import React from 'react';
 import classes from  './Person.module.css'
 import Aux from '../../../hoc/Auxiliary'
 import withClass from '../../../hoc/withClass'
+import PropTypes from 'prop-types'
 
 // React.Fragment is the same as creating an Aux component
 
@@ -25,5 +26,15 @@ const person = (props) =>
         </Aux>
     )
 };
+
+
+// checks to make sure we are getting what we expect
+person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func
+
+}
 
 export default withClass(person, classes.Person);
