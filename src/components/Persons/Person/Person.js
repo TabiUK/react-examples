@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from  './Person.module.css'
 import Aux from '../../../hoc/Auxiliary'
 import withClass from '../../../hoc/withClass'
@@ -6,30 +6,48 @@ import PropTypes from 'prop-types'
 
 // React.Fragment is the same as creating an Aux component
 
-const person = (props) => 
+class Person extends Component 
 {
-  console.log('[person.js] rendering ...')
-  /*
-  *
-  *  this would cause person to throw an error which can be cought by ErrorBoundary
-  */
-  const rnd = Math.random();
-  if (rnd > 1.7) {
-    throw new Error('something went wrong: ' + rnd)
+
+  constructor(props) {
+    super(props)
+    this.inputElementRef = React.createRef()
+
+  }
+  componentDidMount() {
+    // this.inputElement.focus()
+    this.inputElementRef.current.focus()
   }
 
-  return (
+  render() {
+    console.log('[person.js] rendering ...')
+    /*
+    *
+    *  this would cause person to throw an error which can be cought by ErrorBoundary
+    */
+    const rnd = Math.random();
+    if (rnd > 1.7) {
+      throw new Error('something went wrong: ' + rnd)
+    }
+
+    return (
         <Aux> 
-          <p onClick={props.click}>I'm a {props.name} and i am {props.age} years old!!</p>
-          <p>{props.children}</p>
-          <input type="text" onChange={props.changed} value={props.name}/>
+          <p onClick={this.props.click}>I'm a {this.props.name} and i am {this.props.age} years old!!</p>
+          <p>{this.props.children}</p>
+          <input type="text" 
+                 onChange={this.props.changed} 
+                value={this.props.name} 
+                //ref={(inputEL) => {this.inputElement = inputEL}} // older version
+                ref={this.inputElementRef}
+                />
         </Aux>
     )
+  }
 };
 
 
 // checks to make sure we are getting what we expect
-person.propTypes = {
+Person.propTypes = {
   click: PropTypes.func,
   name: PropTypes.string,
   age: PropTypes.number,
@@ -37,4 +55,4 @@ person.propTypes = {
 
 }
 
-export default withClass(person, classes.Person);
+export default withClass(Person, classes.Person);
