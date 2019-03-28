@@ -3,6 +3,7 @@ import classes from  './Person.module.css'
 import Aux from '../../../hoc/Auxiliary'
 import withClass from '../../../hoc/withClass'
 import PropTypes from 'prop-types'
+import AuthContext from '../../../context/auth--context'
 
 // React.Fragment is the same as creating an Aux component
 
@@ -31,7 +32,15 @@ class Person extends Component
     }
 
     return (
-        <Aux> 
+        <Aux>
+          <AuthContext.Consumer>
+            {
+              (context) => 
+              {
+                return context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>
+              }
+            }
+          </AuthContext.Consumer>
           <p onClick={this.props.click}>I'm a {this.props.name} and i am {this.props.age} years old!!</p>
           <p>{this.props.children}</p>
           <input type="text" 
